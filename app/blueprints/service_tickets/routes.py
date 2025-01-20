@@ -30,7 +30,7 @@ def create_service_ticket():
     
     db.session.add(new_service_ticket)
     db.session.commit()
-    return service_ticket_schema.jsonify(new_service_ticket, exclude=["customer_id "]), 201
+    return service_ticket_schema.jsonify(new_service_ticket), 201
 
 @service_tickets_bp.route('/', methods=["GET"])
 def get_service_tickets():

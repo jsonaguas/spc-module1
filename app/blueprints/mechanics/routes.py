@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import select, delete
 from flask_marshmallow import Marshmallow
-from . import mechanics_bp
+from app.blueprints.mechanics import mechanics_bp
 from .schemas import mechanic_schema, mechanics_schema
 from app.models import db, Mechanic
 from marshmallow import ValidationError

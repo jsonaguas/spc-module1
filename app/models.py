@@ -24,7 +24,7 @@ class Customer(Base):
     email: Mapped[str] = mapped_column(db.String(150), nullable=False)
     phone: Mapped[str] = mapped_column(db.String(20))
 
-    service_tickets: Mapped[List["ServiceTickets"]] = db.relationship('service_tickets', back_populates='customer')
+    service_tickets: Mapped[List["ServiceTickets"]] = db.relationship('ServiceTickets', back_populates='customer')
 
 class ServiceTickets (Base):
     __tablename__ = 'service_tickets'
@@ -36,7 +36,7 @@ class ServiceTickets (Base):
     customer_id: Mapped[int] = mapped_column(db.Integer, db.ForeignKey('customers.id'), nullable=False)
 
     customer: Mapped["Customer"] = (db.relationship(back_populates='service_tickets'))
-    mechanic: Mapped[List["Mechanic"]] = db.relationship(secondary=ticket_mechanic, back_populates='service_tickets')
+    mechanics: Mapped[List["Mechanic"]] = db.relationship(secondary=ticket_mechanic, back_populates='service_tickets')
 
 
 class Mechanic (Base):
@@ -48,6 +48,6 @@ class Mechanic (Base):
     phone: Mapped[str] = mapped_column(db.String(20))
     salary: Mapped[float] = mapped_column(db.Float, nullable=False)
 
-    service_tickets: Mapped[List["ServiceTickets"]] = db.relationship(secondary=ticket_mechanic, back_populates='mechanic')
+    service_tickets: Mapped[List["ServiceTickets"]] = db.relationship(secondary=ticket_mechanic, back_populates='mechanics')
 
 
