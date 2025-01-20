@@ -14,7 +14,7 @@ def create_service_ticket():
     except ValidationError as e:
         return jsonify(e.messages), 400
     
-    new_service_ticket = ServiceTickets(service_ticket_date = service_ticket_data["service_date"], 
+    new_service_ticket = ServiceTickets(service_date = service_ticket_data["service_date"], 
                                         service_desc = service_ticket_data["service_desc"],
                                         VIN = service_ticket_data["VIN"],
                                         customer_id = service_ticket_data["customer_id"]
@@ -24,9 +24,9 @@ def create_service_ticket():
         query = select(Mechanic).where(Mechanic.id == mechanic_id)
         mechanic = db.session.execute(query).scalar()
         if mechanic:
-            new_service_ticket.mechanic.append(mechanic)
+            new_service_ticket.mechanics.append(mechanic)
         else:
-            return jsonify({"message": f"Mechanic with id {mechanic_id} not found"}), 404
+            return jsonify({"message": "Mechanic with id not found"}), 400
     
     db.session.add(new_service_ticket)
     db.session.commit()

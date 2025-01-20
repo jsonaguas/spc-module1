@@ -19,7 +19,7 @@ def create_mechanic():
                             salary=mechanic_data["salary"])
     db.session.add(new_mechanic)
     db.session.commit()
-    return mechanic_schema.jsonify({"message": "Mechanic created"}), 200
+    return mechanic_schema.jsonify(new_mechanic), 201
 
 @mechanics_bp.route("/", methods=["GET"])
 def get_mechanics():
