@@ -37,3 +37,32 @@ def get_service_tickets():
     query = select(ServiceTickets)
     result = db.session.execute(query).scalars().all()
     return service_tickets_schema.jsonify(result), 200
+
+@service_tickets_bp.route('/<int:id>', methods=["PUT"])
+# def edit_loan(ticket_id):
+#     query = select(ServiceTickets).where(ServiceTickets.id == ticket_id)
+#     ticket = db.session.execute(query).scalars().first()
+#     if ticket == None:
+#         return jsonify({"message": f"Ticket with id {ticket_id} not found"}), 404
+    
+#     try:
+#         ticket_data = service_ticket_schema.load(request.json)
+#     except ValidationError as e:
+#         return jsonify(e.messages), 400
+    
+#     for field, value in ticket_data.items():
+#         setattr(ticket, field, value)
+    
+#     db.session.commit()
+#     return service_ticket_schema.jsonify(ticket), 200
+
+
+@service_tickets_bp.route('/<int:id>', methods=["DELETE"])
+def delete_ticket(ticket_id):
+    query = select(ServiceTickets).where(ServiceTickets.id == ticket_id)
+    ticket = db.session.execute(query).scalars().first()
+
+    db.session.delete(ticket)
+    db.session.commit()
+    return jsonify({"message": f"Ticket {ticket_id} deleted"})
+
