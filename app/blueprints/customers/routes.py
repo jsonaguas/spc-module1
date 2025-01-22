@@ -2,7 +2,7 @@ from flask import jsonify, request
 from app.blueprints.customers import customers_bp
 from app.blueprints.customers.schemas import customer_schema, customers_schema, login_schema
 from marshmallow import ValidationError
-from app.models import db, Customer
+from app.models import db, Customer, ServiceTickets
 from sqlalchemy import select, delete
 from app.utils.util import encode_token, token_required
 from app.extensions import cache, limiter
@@ -37,6 +37,14 @@ def get_customers():
     query = select(Customer)
     customers = db.session.execute(query).scalars().all()
     return customers_schema.jsonify(customers), 200
+
+@customers_bp.route('/my_tickets', methods=['GET'])
+@token_required
+def get_my_tickets(customer_id):
+    query = select(ServiceTickets).where(ServiceTickets.customer_id == customer_id)
+    tickets = db.session.execute(query).scalars().all()
+    return customers_schema.jsonify(tickets), 200
+
 
 @customers_bp.route('/<int:customer_id>', methods=['GET'])
 @token_required
