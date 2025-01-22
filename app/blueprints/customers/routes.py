@@ -4,10 +4,11 @@ from app.blueprints.customers.schemas import customer_schema, customers_schema, 
 from marshmallow import ValidationError
 from app.models import db, Customer
 from sqlalchemy import select, delete
-from app.utils.util import encode_token
-from app.extensions import cache
+from app.utils.util import encode_token, token_required
+from app.extensions import cache, limiter
 
 @customers_bp.route("/login", methods=["POST"])
+@limiter.limit("5 per minute")
 def login():
     try:
         credentials = login_schema.load(request.json)
@@ -29,16 +30,20 @@ def login():
         return jsonify(response), 200
     else:
         return jsonify({"message": "Invalid email or password"}), 400
-    
-
-
 
 @customers_bp.route('/', methods=['GET'])
 @cache.cached(timeout=60)
 def get_customers():
     query = select(Customer)
-    result = db.session.execute(query).scalars().all()
-    return customers_schema.jsonify(result), 200
+    customers = db.session.execute(query).scalars().all()
+    return customers_schema.jsonify(customers), 200
+
+@customers_bp.route('/<int:customer_id>', methods=['GET'])
+@token_required
+def get_customer(customer_id):
+    query = select(Customer).where(Customer.id == customer_id)
+    customer = db.session.execute(query).scalars().first()
+    return customer_schema.jsonify(customer), 200
 
 @customers_bp.route("/", methods=["POST"])
 def create_customer():
@@ -53,3 +58,12 @@ def create_customer():
     db.session.add(new_customer)
     db.session.commit()
     return customer_schema.jsonify(new_customer), 201
+
+@customers_bp.route("/<int:customer_id>", methods=["DELETE"])
+def delete_customer(customer_id):
+   query = select(Customer).where(Customer.id == customer_id)
+   customer = db.session.execute(query).scalars().first()
+
+   db.session.delete(customer)
+   db.session.commit()
+   return customer_schema.jsonify({"message":f"{customer_id} deleted successfully"})
