@@ -2,6 +2,12 @@ from app.extensions import ma
 from app.models import ServiceTickets, Mechanic
 from marshmallow import fields
 
+class EditTicketSchema(ma.Schema):
+    add_customer_ids = fields.List(fields.Int(), required=True)
+    remove_customer_ids = fields.List(fields.Int(), required=True)
+    class Meta:
+        fields = ('add_customer_ids', 'remove_customer_ids')
+
 class ServiceTicketsSchema(ma.SQLAlchemyAutoSchema):
     mechanics = fields.Nested("MechanicSchema", many=True)
     class Meta:
@@ -10,3 +16,4 @@ class ServiceTicketsSchema(ma.SQLAlchemyAutoSchema):
 
 service_ticket_schema = ServiceTicketsSchema()
 service_tickets_schema = ServiceTicketsSchema(many=True)
+edit_ticket_schema = EditTicketSchema()

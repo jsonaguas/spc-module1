@@ -5,6 +5,7 @@ from marshmallow import ValidationError
 from app.models import db, Customer
 from sqlalchemy import select, delete
 from app.utils.util import encode_token
+from app.extensions import cache
 
 @customers_bp.route("/login", methods=["POST"])
 def login():
@@ -33,6 +34,7 @@ def login():
 
 
 @customers_bp.route('/', methods=['GET'])
+@cache.cached(timeout=60)
 def get_customers():
     query = select(Customer)
     result = db.session.execute(query).scalars().all()
