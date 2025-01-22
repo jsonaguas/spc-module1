@@ -56,6 +56,13 @@ def delete_mechanic(mechanic_id):
 
     return jsonify({"message": "Mechanic deleted"}), 200
 
+@mechanics_bp.route("/popular", methods=["GET"])
+def popular_mechanics():
+    query = select(Mechanic)
+    mechanics = db.session.execute(query).scalars().all()
+    mechanics.sort(key=lambda mechanic:len(mechanic.service_tickets), reverse=True)
+    return mechanics_schema.jsonify(mechanics), 200
+
 
 
     
