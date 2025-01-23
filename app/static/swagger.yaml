@@ -62,6 +62,17 @@ paths:
               email: jdoe@gmail.com
               password: mypassword
 
+    get:
+      tags:
+        - Customers
+      summary: "Get all customers"
+      description: "Endpoint returns all customers"
+      responses:
+        200:
+          description: "Retrieved customers successfully"
+          schema:
+            $ref: "#/definitions/AllCustomers"
+
   
 
 definitions: 
@@ -118,3 +129,20 @@ definitions:
         type: "string"
       password:
         type: "string"
+
+  AllCustomers:
+    type: "array"
+    items:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+        name:
+          type: "string"
+        email:
+          type: "string"
+        phone:
+          type: "string"
+        password:
+          type: "string"
+  
