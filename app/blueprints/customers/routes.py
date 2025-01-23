@@ -43,7 +43,7 @@ def get_customers():
 def get_my_tickets(customer_id):
     query = select(ServiceTickets).where(ServiceTickets.customer_id == customer_id)
     tickets = db.session.execute(query).scalars().all()
-    return customers_schema.jsonify(tickets), 200
+    return customer_schema.jsonify(tickets), 200
 
 
 @customers_bp.route('/<int:customer_id>', methods=['GET'])

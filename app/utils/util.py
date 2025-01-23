@@ -5,7 +5,7 @@ from flask import request, jsonify
 import os
 
 
-SECRET_KEY = os.environ.get # Secret key for JWT token
+SECRET_KEY = "hellokitty" # Secret key for JWT token
 
 def encode_token(customer_id):
     payload = {
