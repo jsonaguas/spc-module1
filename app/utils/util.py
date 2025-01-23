@@ -1,4 +1,5 @@
-import jwt
+from jose import jwt
+import jose
 from datetime import datetime, timezone, timedelta
 from functools import wraps
 from flask import request, jsonify
@@ -11,7 +12,7 @@ def encode_token(customer_id):
     payload = {
         'exp': datetime.now(timezone.utc) + timedelta(days=0, hours=1),
         'iat': datetime.now(timezone.utc), #issued at
-        'sub': customer_id #who does token belong to, see what user it belongs to
+        'sub': str(customer_id) #who does token belong to, see what user it belongs to
 
     }
     token = jwt.encode(payload, SECRET_KEY, algorithm='HS256')
@@ -29,9 +30,9 @@ def token_required(f):
                 data = jwt.decode(token, SECRET_KEY, algorithms='HS256')
                 print(data)
                 customer_id = data['sub']
-            except jwt.ExpiredSignatureError:
+            except jose.exceptions.ExpiredSignatureError:
                 return jsonify({"message": "Token expired"}), 400
-            except jwt.InvalidTokenError:
+            except jose.exceptions.JWTError:
                 return jsonify({"message": "Invalid token"}), 400
             return f(customer_id, *args, **kwargs)
         else:

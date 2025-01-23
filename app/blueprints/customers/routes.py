@@ -46,7 +46,7 @@ def get_my_tickets(customer_id):
     return customer_schema.jsonify(tickets), 200
 
 
-@customers_bp.route('/<int:customer_id>', methods=['GET'])
+@customers_bp.route('/profile', methods=['GET'])
 @token_required
 def get_customer(customer_id):
     query = select(Customer).where(Customer.id == customer_id)
