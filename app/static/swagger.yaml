@@ -1,0 +1,66 @@
+swagger: '2.0'
+info:
+  title: "Mechanic Management API"
+  description: "This is the API documentation for the Mechanic Management system."
+  version: "1.0.0"
+host: "127.0.0.1:5000"
+schemes:
+  - "http"
+consumes:
+  - "application/json"
+produces:
+  - "application/json"
+paths: 
+  /customers/login:
+    post:
+      tags:
+        - "customers"
+      summary: "Login a customer"
+      description: "This endpoint allows a customer to log in."
+      operationId: "loginCustomer"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "Login credentials"
+          required: true
+          schema:
+            $ref: "#/definitions/LoginCredentials"
+      responses:
+        200:
+          description: "Login successful"
+          schema:
+            $ref: "#/definitions/LoginResponse"
+          examples:
+            application/json:
+              token: "kjlasdkfjadslkj"
+              message: "Login successful"
+              status: "success"
+        400:
+          description: "Invalid credentials"
+  
+
+definitions: 
+  LoginCredentials:
+    type: "object"
+    properties:
+      email:
+        type: "string"
+      password:
+        type: "string"
+    required:
+      - email
+      - password
+    
+  LoginResponse:
+    type: "object"
+    properties:
+      token:
+        type: "string"
+      message:
+        type: "string"
+      status:
+        type: "string"
