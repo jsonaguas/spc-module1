@@ -1,7 +1,7 @@
 from flask import jsonify, request
 from . import service_tickets_bp   
 from .schemas import service_ticket_schema, service_tickets_schema, edit_ticket_schema
-from app.models import db, ServiceTickets, Mechanic
+from app.models import db, ServiceTickets, Mechanic, Inventory
 from sqlalchemy import select, delete 
 from marshmallow import ValidationError
 
@@ -60,9 +60,18 @@ def edit_loan(ticket_id):
         mechanic = db.session.execute(query).scalars().first()
         if mechanic and mechanic in ticket.mechanics:
             ticket.mechanics.remove(mechanic)
+
+
+    for part_id in ticket_edits["add_part_ids"]:
+        query = select(Inventory).where(Inventory.id == part_id)
+        part = db.session.execute(query).scalars().first()
+        if part:
+            ticket.parts.append(part)
+        else:
+            return jsonify({"message": "Part with id not found"}), 400
+        
     db.session.commit()
     return service_ticket_schema.jsonify(ticket), 200
-
 
 
 @service_tickets_bp.route('/<int:id>', methods=["DELETE"])
