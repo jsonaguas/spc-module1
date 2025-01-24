@@ -67,11 +67,12 @@ def create_customer():
     db.session.commit()
     return customer_schema.jsonify(new_customer), 201
 
-@customers_bp.route("/<int:customer_id>", methods=["DELETE"])
+@customers_bp.route("/", methods=["DELETE"])
+@token_required
 def delete_customer(customer_id):
    query = select(Customer).where(Customer.id == customer_id)
    customer = db.session.execute(query).scalars().first()
 
    db.session.delete(customer)
    db.session.commit()
-   return customer_schema.jsonify({"message":f"{customer_id} deleted successfully"})
+   return customer_schema.jsonify({"message":f"{customer_id} deleted successfully"}), 200
