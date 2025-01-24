@@ -10,11 +10,20 @@ consumes:
   - "application/json"
 produces:
   - "application/json"
+
+securityDefinitions:
+  bearerAuth:
+    type: apiKey
+    name: Authorization
+    in: header
+
+
+
 paths: 
   /customers/login:
     post:
       tags:
-        - "customers"
+        - "Customers"
       summary: "Login a customer"
       description: "This endpoint allows a customer to log in."
       parameters:
@@ -72,6 +81,48 @@ paths:
           description: "Retrieved customers successfully"
           schema:
             $ref: "#/definitions/AllCustomers"
+
+    put:
+      tags:
+        - Customers
+      summary: "Update a customer"
+      description: "Endpoint updates a customer"
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "Information needed to update a customer"
+          required: true
+          schema:
+            $ref: "#/definitions/UpdateCustomerPayload"
+      responses:
+        200:
+          description: "Customer updated"
+          schema:
+            $ref: "#/definitions/UpdateCustomerResponse"
+          examples:
+            application/json:
+              id: 1
+              name: John Doe
+              phone: "1234567890"
+              email: jdoe@gmail.com
+              password: mypassword
+    delete:
+      tags:
+        - Customers
+      summary: "Delete a customer"
+      description: "Endpoint deletes a customer"
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: "Customer deleted"
+          schema:
+            $ref: "#/definitions/DeleteCustomerResponse"
+          examples:
+            application/json:
+              message: "succesfully deleted <customer_id>"
 
   
 
@@ -145,4 +196,35 @@ definitions:
           type: "string"
         password:
           type: "string"
+    
+  UpdateCustomerPayload:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      email:
+        type: "string"
+      phone:
+        type: "string"
+      password:
+        type: "string"
+    required:
+    - name
+    - email
+    - phone
+    - password
+
+  UpdateCustomerResponse:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      name:
+        type: "string"
+      email:
+        type: "string"
+      phone:
+        type: "string"
+      password:
+        type: "string"
   
