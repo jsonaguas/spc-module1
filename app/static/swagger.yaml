@@ -229,3 +229,8 @@ definitions:
       password:
         type: "string"
   
+  DeleteCustomerResponse:
+    type: "object"
+    properties:
+      message:
+        type: "string"
