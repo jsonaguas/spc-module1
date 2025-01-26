@@ -39,7 +39,7 @@ def get_service_tickets():
     return service_tickets_schema.jsonify(result), 200
 
 @service_tickets_bp.route('/<int:ticket_id>', methods=["PUT"])
-def edit_ticket(ticket_id):
+def edit_ticket_mechanic(ticket_id):
     try:
         ticket_edits = edit_ticket_schema.load(request.json)
     except ValidationError as e:
@@ -69,11 +69,23 @@ def edit_ticket(ticket_id):
             ticket.parts.append(part)
         else:
             return jsonify({"message": "Part with id not found"}), 400
-        
-
-        
     db.session.commit()
     return service_ticket_schema.jsonify(ticket), 200
+
+@service_tickets_bp.route('/<int:ticket_id>/edit', methods=["PUT"])
+def edit_ticket_part(ticket_id):
+    try:
+        ticket_edits2 = service_ticket_schema.load(request.json)
+    except ValidationError as e:
+        return jsonify(e.messages), 400
+    query = select(ServiceTickets).where(ServiceTickets.id == ticket_id)
+    ticket2 = db.session.execute(query).scalars().first()
+
+    for field, value in ticket_edits2.items():
+        setattr(ticket2, field, value)
+
+    db.session.commit()
+    return service_ticket_schema.jsonify(ticket2), 200
 
 
 @service_tickets_bp.route('/<int:id>', methods=["DELETE"])

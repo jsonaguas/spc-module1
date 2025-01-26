@@ -162,7 +162,7 @@ paths:
           description: "Retrieved service tickets successfully"
           schema:
             $ref: "#/definitions/AllServiceTickets"
-  /service_tickets/{id}:
+  /service_tickets/{id}/edit:
     put:
       tags:
         - Service Tickets
