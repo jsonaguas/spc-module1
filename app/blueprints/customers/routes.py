@@ -76,3 +76,20 @@ def delete_customer(customer_id):
    db.session.delete(customer)
    db.session.commit()
    return jsonify({"message": "Deleted successfully"}), 200
+
+@customers_bp.route("/", methods=["PUT"])
+@token_required
+def update_customer(customer_id):
+    try:
+        update_customerd = customer_schema.load(request.json)
+    except ValidationError as e:
+        return jsonify(e.messages), 400
+    
+    query = select(Customer).where(Customer.id == customer_id)
+    customer = db.session.execute(query).scalars().first()
+
+    for field, value in update_customerd.items():
+        setattr(customer, field, value)
+
+    db.session.commit()
+    return customer_schema.jsonify(customer), 200
