@@ -1,7 +1,6 @@
 from app import create_app
 from app.models import db, Customer
 import unittest
-from app.utils.util import encode_token
 
 class TestCustomer(unittest.TestCase):
     def setUp(self):
@@ -62,8 +61,6 @@ class TestCustomer(unittest.TestCase):
             "password":"newpassword"
         }
         token = self.test_login_customer()
-        print(f"Token: {token}")
         headers = {"Authorization": f"Bearer {token}"}
-        # headers = {'Authorization': "Bearer" + self.test_login_customer()}
         response = self.client.put("/customers/", json=update_payload, headers=headers)
         self.assertEqual(response.status_code, 200)
