@@ -39,7 +39,7 @@ def get_service_tickets():
     return service_tickets_schema.jsonify(result), 200
 
 @service_tickets_bp.route('/<int:ticket_id>', methods=["PUT"])
-def edit_loan(ticket_id):
+def edit_ticket(ticket_id):
     try:
         ticket_edits = edit_ticket_schema.load(request.json)
     except ValidationError as e:
@@ -69,6 +69,8 @@ def edit_loan(ticket_id):
             ticket.parts.append(part)
         else:
             return jsonify({"message": "Part with id not found"}), 400
+        
+
         
     db.session.commit()
     return service_ticket_schema.jsonify(ticket), 200
