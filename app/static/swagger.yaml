@@ -20,6 +20,7 @@ securityDefinitions:
 
 
 paths: 
+#CUSTOMER ENDPOINTS
   /customers/login:
     post:
       tags:
@@ -124,9 +125,79 @@ paths:
           examples:
             application/json:
               message: "succesfully deleted <customer_id>"
+#SERVICE TICKET ENDPOINTS
+  /service_tickets:
+    post:
+      tags:
+        - Service Tickets
+      summary: "Create a service ticket"
+      description: "Endpoint creates a new service ticket"
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "Information needed to create a service ticket"
+          required: true
+          schema:
+            $ref: "#/definitions/CreateServiceTicketPayload"
+      responses:
+        201:
+          description: "Service ticket created"
+          schema:
+            $ref: "#/definitions/CreateServiceTicketResponse"
+          examples:
+            application/json:
+              id: 1
+              customer_id: 1
+              VIN: "1234567890"
+              service_date: "2021-01-01"
+              service_desc: "Oil change"
+              mechanic_ids: [1, 2, 3]
+    get:
+      tags:
+        - Service Tickets
+      summary: "Get all service tickets"
+      description: "Endpoint returns all service tickets"
+      responses:
+        200:
+          description: "Retrieved service tickets successfully"
+          schema:
+            $ref: "#/definitions/AllServiceTickets"
+  /service_tickets/{id}:
+    put:
+      tags:
+        - Service Tickets
+      summary: "Update a service ticket"
+      description: "Endpoint updates a service ticket"
+      parameters:
+        - in: "path"
+          name: "id"
+          description: "Service ticket ID"
+          required: true
+          type: "integer"
+        - in: "body"
+          name: "body"
+          description: "Information needed to update a service ticket"
+          required: true
+          schema:
+            $ref: "#/definitions/UpdateServiceTicketPayload"
+      responses:
+        200:
+          description: "Service ticket updated"
+          schema:
+            $ref: "#/definitions/UpdateServiceTicketResponse"
+          examples:
+            application/json:
+              id: 1
+              customer_id: 1
+              VIN: "1234567890"
+              service_date: "2021-01-01"
+              service_desc: "Oil change"
+            
 
-  
 
+
+
+#MECHANIC ENDPOINTS            
 definitions: 
   LoginCredentials:
     type: "object"
@@ -234,3 +305,74 @@ definitions:
     properties:
       message:
         type: "string"
+
+  CreateServiceTicketPayload:
+    type: "object"
+    properties:
+      VIN:
+        type: "string"
+      customer_id:
+        type: "integer"
+      service_date:
+        type: "string"
+      service_desc:
+        type: "string"
+      mechanic_ids:
+        type: "array"
+        items:
+          type: "integer"
+    required:
+      - VIN
+      - service_date
+      - service_desc
+      - customer_id
+      - mechanic_ids
+  CreateServiceTicketResponse:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      customer_id:
+        type: "integer"
+      VIN:
+        type: "string"
+      service_date:
+        type: "string"
+      service_desc:
+        type: "string"
+      mechanic_ids:
+        type: "array"
+        items:
+          type: "integer"
+
+  UpdateServiceTicketPayload:
+    type: "object"
+    properties:
+      customer_id:
+        type: "integer"
+      VIN:
+        type: "string"
+      service_date:
+        type: "string"
+      service_desc:
+        type: "string"
+  UpdateServiceTicketResponse:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      VIN:
+        type: "string"
+      customer_id:
+        type: "integer"
+      service_date:
+        type: "string"
+      service_desc:
+        type: "string"
+    required:
+      - id
+      - VIN
+      - service_date
+      - service_desc
+      - customer_id
+
