@@ -20,6 +20,14 @@ def create_service_ticket():
                                         customer_id = service_ticket_data["customer_id"]
                                         )
 
+    for part_id in service_ticket_data["part_ids"]:
+        query = select(Inventory).where(Inventory.id == part_id)
+        part = db.session.execute(query).scalar()
+        if part:
+            new_service_ticket.inventory.append(part)
+        else:
+            return jsonify({"message": "Part with id not found"}), 400
+        
     for mechanic_id in service_ticket_data["mechanic_ids"]:
         query = select(Mechanic).where(Mechanic.id == mechanic_id)
         mechanic = db.session.execute(query).scalar()
@@ -65,7 +73,7 @@ def edit_ticket_mechanic(ticket_id):
     for part_id in ticket_edits["add_part_ids"]:
         query = select(Inventory).where(Inventory.id == part_id)
         part = db.session.execute(query).scalars().first()
-        if part:
+        if part and part not in ticket.inventory:
             ticket.inventory.append(part)
         else:
             return jsonify({"message": "Part with id not found"}), 400

@@ -1,4 +1,6 @@
-from flask import jsonify, request
+from flask import Flask, jsonify, request
+from flask_sqlalchemy import SQLAlchemy
+from flask_marshmallow import Marshmallow
 from app.blueprints.inventory import inventory_bp
 from app.blueprints.inventory.schemas import item_schema, items_schema
 from marshmallow import ValidationError
