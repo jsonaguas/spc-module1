@@ -665,7 +665,7 @@ definitions:
       phone:
         type: "string"
       salary:
-        type: "float"
+        type: "string"
   UpdateMechanicPayload:
     type: "object"
     properties:
@@ -694,7 +694,7 @@ definitions:
       phone:
         type: "string"
       salary:
-        type: "float"
+        type: "string"
 
   AllParts:
     type: "array"
@@ -706,14 +706,14 @@ definitions:
         name:
           type: "string"
         price:
-          type: "float"
+          type: "string"
   CreatePartPayload:
     type: "object"
     properties:
       name:
         type: "string"
       price:
-        type: "float"
+        type: "string"
     required:
       - name
       - price
@@ -725,14 +725,14 @@ definitions:
       name:
         type: "string"
       price:
-        type: "float"
+        type: "string"
   UpdatePartPayload:
     type: "object"
     properties:
       name:
         type: "string"
       price:
-        type: "float"
+        type: "string"
     required:
       - name
       - price
@@ -744,4 +744,4 @@ definitions:
       name:
         type: "string"
       price:
-        type: "float"
+        type: "string"
