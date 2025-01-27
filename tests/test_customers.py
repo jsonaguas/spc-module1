@@ -64,3 +64,15 @@ class TestCustomer(unittest.TestCase):
         headers = {"Authorization": f"Bearer {token}"}
         response = self.client.put("/customers/", json=update_payload, headers=headers)
         self.assertEqual(response.status_code, 200)
+
+    def test_invalid_update(self):
+        update_payload = {
+            "name": "Jimmy Doe",
+            "email":"",
+            "phone":"1234567890",
+            "salary":"newpassword"
+        }
+        token = self.test_login_customer()
+        headers = {"Authorization": f"Bearer {token}"}
+        response = self.client.put("/customers/", json=update_payload, headers=headers)
+        self.assertEqual(response.status_code, 400)
