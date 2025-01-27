@@ -330,8 +330,85 @@ paths:
               name: John Doe
               phone: "1234567890"
               email: jdoe@gmail.com
-
-
+  /inventory:
+    get:
+      tags:
+        - Inventory
+      summary: "Get all parts"
+      description: "Endpoint returns all parts"
+      responses:
+        200:
+          description: "Retrieved parts successfully"
+          schema:
+            $ref: "#/definitions/AllParts"
+    post:
+      tags:
+        - Inventory
+      summary: "Create a part"
+      description: "Endpoint creates a new part"
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "Information needed to create a part"
+          required: true
+          schema:
+            $ref: "#/definitions/CreatePartPayload"
+      responses:
+        201:
+          description: "Part created"
+          schema:
+            $ref: "#/definitions/CreatePartResponse"
+          examples:
+            application/json:
+              id: 1
+              name: "Car battery"
+              price: 79.99
+          
+  /inventory/{id}:
+    put:
+      tags:
+        - Inventory
+      summary: "Update a part"
+      description: "Endpoint updates a part"
+      parameters:
+        - in: "path"
+          name: "id"
+          description: "Part ID"
+          required: true
+          type: "integer"
+        - in: "body"
+          name: "body"
+          description: "Information needed to update a part"
+          required: true
+          schema:
+            $ref: "#/definitions/UpdatePartPayload"
+      responses:
+        200:
+          description: "Part updated"
+          schema:
+            $ref: "#/definitions/UpdatePartResponse"
+          examples:
+            application/json:
+              id: 1
+              name: "Car battery"
+              price: 79.99
+    delete:
+      tags:
+        - Inventory
+      summary: "Delete a part"
+      description: "Endpoint deletes a part"
+      parameters:
+        - in: "path"
+          name: "id"
+          description: "Part ID"
+          required: true
+          type: "integer"
+      responses:
+        200:
+          description: "Part deleted"
+          examples:
+            application/json:
+              message: "succesfully deleted <part_id>"
 
 definitions: 
   LoginCredentials:
@@ -617,4 +694,54 @@ definitions:
       phone:
         type: "string"
       salary:
+        type: "float"
+
+  AllParts:
+    type: "array"
+    items:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+        name:
+          type: "string"
+        price:
+          type: "float"
+  CreatePartPayload:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      price:
+        type: "float"
+    required:
+      - name
+      - price
+  CreatePartResponse:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      name:
+        type: "string"
+      price:
+        type: "float"
+  UpdatePartPayload:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      price:
+        type: "float"
+    required:
+      - name
+      - price
+  UpdatePartResponse:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      name:
+        type: "string"
+      price:
         type: "float"
