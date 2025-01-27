@@ -166,7 +166,7 @@ paths:
     put:
       tags:
         - Service Tickets
-      summary: "Update a service ticket"
+      summary: "Update mechanics on a service ticket"
       description: "Endpoint updates a service ticket"
       parameters:
         - in: "path"
@@ -192,8 +192,55 @@ paths:
               VIN: "1234567890"
               service_date: "2021-01-01"
               service_desc: "Oil change"
-            
-
+  /service_tickets/{id}:
+    put:
+      tags:
+        - Service Tickets
+      summary: "Updates a service ticket"
+      description: "Endpoint updates a service ticket"
+      parameters:
+        - in: "path"
+          name: "id"
+          description: "Service ticket ID"
+          required: true
+          type: "integer"
+        - in: "body"
+          name: "body"
+          description: "Information needed to update a service ticket"
+          required: true
+          schema:
+            $ref: "#/definitions/UpdateServiceTicketMechPayload"
+      responses:
+        200:
+          description: "Service ticket updated"
+          schema:
+            $ref: "#/definitions/UpdateServiceTicketMechResponse"
+          examples:
+            application/json:
+              add_mechanic_ids: [1, 2, 3]
+              remove_mechanic_ids: [4, 5, 6]
+              add_part_ids: [1, 2, 3]
+    delete:
+      tags:
+        - Service Tickets
+      summary: "Delete a service ticket"
+      description: "Endpoint deletes a service ticket"
+      parameters:
+        - in: "path"
+          name: "id"
+          description: "Service ticket ID"
+          required: true
+          type: "integer"
+          schema: 
+            $ref: "#/definitions/DeleteServiceTicketPayload"
+      responses:
+        200:
+          description: "Service ticket deleted"
+          schema:
+            $ref: "#/definitions/DeleteServiceTicketResponse"
+          examples:
+            application/json:
+              message: "succesfully deleted <service_ticket_id>"
 
 
 
@@ -375,4 +422,58 @@ definitions:
       - service_date
       - service_desc
       - customer_id
+  UpdateServiceTicketMechPayload:
+    type: "object"
+    properties:
+      add_mechanic_ids:
+        type: "array"
+        items:
+          type: "integer"
+      remove_mechanic_ids:
+        type: "array"
+        items:
+          type: "integer"
+      add_part_ids:
+        type: "array"
+        items:
+          type: "integer"
+    required:
+      - add_mechanic_ids
+      - remove_mechanic_ids
+      - add_part_ids
+  UpdateServiceTicketMechResponse:
+    type: "object"
+    properties:
+      add_mechanic_ids:
+        type: "array"
+        items:
+          type: "integer"
+      remove_mechanic_ids:
+        type: "array"
+        items:
+          type: "integer"
+      add_part_ids:
+        type: "array"
+        items:
+          type: "integer"
+    required:
+      - add_mechanic_ids
+      - remove_mechanic_ids
+      - add_part_ids
+
+  DeleteServiceTicketPayload:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+    required:
+      - id    
+  DeleteServiceTicketResponse:
+    type: "object"
+    properties:
+      id: 
+        type:
+          "integer"
+      message:
+        type: "string"
 

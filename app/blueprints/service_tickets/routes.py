@@ -88,7 +88,7 @@ def edit_ticket_part(ticket_id):
     return service_ticket_schema.jsonify(ticket2), 200
 
 
-@service_tickets_bp.route('/<int:id>', methods=["DELETE"])
+@service_tickets_bp.route('/<int:ticket_id>', methods=["DELETE"])
 def delete_ticket(ticket_id):
     query = select(ServiceTickets).where(ServiceTickets.id == ticket_id)
     ticket = db.session.execute(query).scalars().first()
