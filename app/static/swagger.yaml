@@ -244,7 +244,95 @@ paths:
 
 
 
-#MECHANIC ENDPOINTS            
+#MECHANIC ENDPOINTS  
+  /mechanics:
+    get:
+      tags:
+        - Mechanics
+      summary: "Get all mechanics"
+      description: "Endpoint returns all mechanics"
+      responses:
+        200:
+          description: "Retrieved mechanics successfully"
+          schema:
+            $ref: "#/definitions/AllMechanics"
+    post:
+      tags:
+        - Mechanics
+      summary: "Create a mechanic"
+      description: "Endpoint creates a new mechanic"
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "Information needed to create a mechanic"
+          required: true
+          schema:
+            $ref: "#/definitions/CreateMechanicPayload"
+      responses:
+        201:
+          description: "Mechanic created"
+          schema:
+            $ref: "#/definitions/CreateMechanicResponse"
+          examples:
+            application/json:
+              id: 1
+              name: John Doe
+              phone: "1234567890"
+              email: jdoe@gmail.com
+              salary: 50000.00
+  /mechanics/{id}:
+    delete:
+      tags:
+        - Mechanics
+      summary: "Delete a mechanic"
+      description: "Endpoint deletes a mechanic"
+      parameters:
+        - in: "path"
+          name: "id"
+          description: "Mechanic ID"
+          required: true
+          type: "integer"
+          schema:
+            $ref: "#/definitions/DeleteMechanicPayload"
+      responses:
+        200:
+          description: "Mechanic deleted"
+          schema:
+            $ref: "#/definitions/DeleteMechanicResponse"
+          examples:
+            application/json:
+              message: "succesfully deleted <mechanic_id>"
+    put:
+      tags:
+        - Mechanics
+      summary: "Update a mechanic"
+      description: "Endpoint updates a mechanic"
+      parameters:
+        - in: "path"
+          name: "id"
+          description: "Mechanic ID"
+          required: true
+          type: "integer"
+        - in: "body"
+          name: "body"
+          description: "Information needed to update a mechanic"
+          required: true
+          schema:
+            $ref: "#/definitions/UpdateMechanicPayload"
+      responses:
+        200:
+          description: "Mechanic updated"
+          schema:
+            $ref: "#/definitions/UpdateMechanicResponse"
+          examples:
+            application/json:
+              id: 1
+              name: John Doe
+              phone: "1234567890"
+              email: jdoe@gmail.com
+
+
+
 definitions: 
   LoginCredentials:
     type: "object"
@@ -347,11 +435,6 @@ definitions:
       password:
         type: "string"
   
-  DeleteCustomerResponse:
-    type: "object"
-    properties:
-      message:
-        type: "string"
 
   CreateServiceTicketPayload:
     type: "object"
@@ -461,19 +544,77 @@ definitions:
       - remove_mechanic_ids
       - add_part_ids
 
-  DeleteServiceTicketPayload:
+
+  AllMechanics:
+    type: "array"
+    items:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+        name:
+          type: "string"
+        email:
+          type: "string"
+        phone:
+          type: "string"
+        password:
+          type: "string"
+  CreateMechanicPayload:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      email:
+        type: "string"
+      phone:
+        type: "string"
+      salary:
+        type: "string"
+    required:
+      - name
+      - email
+      - phone
+      - salary
+  CreateMechanicResponse:
     type: "object"
     properties:
       id:
         type: "integer"
-    required:
-      - id    
-  DeleteServiceTicketResponse:
+      name:
+        type: "string"
+      email:
+        type: "string"
+      phone:
+        type: "string"
+      salary:
+        type: "float"
+  UpdateMechanicPayload:
     type: "object"
     properties:
-      id: 
-        type:
-          "integer"
-      message:
+      name:
         type: "string"
-
+      email:
+        type: "string"
+      phone:
+        type: "string"
+      salary:
+        type: "string"
+    required:
+      - name
+      - email
+      - phone
+      - salary
+  UpdateMechanicResponse:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      name:
+        type: "string"
+      email:
+        type: "string"
+      phone:
+        type: "string"
+      salary:
+        type: "float"
