@@ -66,9 +66,11 @@ def edit_ticket_mechanic(ticket_id):
         query = select(Inventory).where(Inventory.id == part_id)
         part = db.session.execute(query).scalars().first()
         if part:
-            ticket.parts.append(part)
+            ticket.inventory.append(part)
         else:
             return jsonify({"message": "Part with id not found"}), 400
+        
+
     db.session.commit()
     return service_ticket_schema.jsonify(ticket), 200
 
