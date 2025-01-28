@@ -41,7 +41,71 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Enter new mechanic",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"Kendrick\",\n\"email\":\"lamar@mustard.com\",\n\"phone\":\"56565656\",\n\"salary\":\"90000.00\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:5000/mechanics/",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"mechanics",
+								""
+							]
+						}
+					},
+					"status": "CREATED",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.0.4 Python/3.12.3"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Jan 2025 00:58:12 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "112"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"email\": \"lamar@mustard.com\",\n    \"id\": 5,\n    \"name\": \"Kendrick\",\n    \"phone\": \"56565656\",\n    \"salary\": 90000\n}"
+				}
+			]
 		},
 		{
 			"name": "Get mechanics",
@@ -69,7 +133,62 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Get mechanics",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "127.0.0.1:5000/mechanics/",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"mechanics",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.0.4 Python/3.12.3"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Jan 2025 00:56:22 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "258"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"email\": \"hgranger@hogwarts.edu\",\n        \"id\": 1,\n        \"name\": \"Hermione\",\n        \"phone\": \"5656565\",\n        \"salary\": 80000\n    },\n    {\n        \"email\": \"choseone@hogwarts.edu\",\n        \"id\": 3,\n        \"name\": \"Harry\",\n        \"phone\": \"999666\",\n        \"salary\": 5000\n    }\n]"
+				}
+			]
 		},
 		{
 			"name": "Edit mechanic",
@@ -84,7 +203,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"name\":\"\",\n\"phone\":\"\",\n\"email\":\"\",\n\"password\":\"\"\n}",
+					"raw": "{\"name\":\"Hermione\",\n\"phone\":\"5656565\",\n\"email\":\"hgranger@hogwarts.edu\",\n\"salary\":\"80000.00\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -106,7 +225,71 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Edit mechanic",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"Hermione\",\n\"phone\":\"5656565\",\n\"email\":\"hgranger@hogwarts.edu\",\n\"salary\":\"80000.00\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:5000/mechanics/1",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"mechanics",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.0.4 Python/3.12.3"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Jan 2025 00:54:44 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "115"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"email\": \"hgranger@hogwarts.edu\",\n    \"id\": 1,\n    \"name\": \"Hermione\",\n    \"phone\": \"5656565\",\n    \"salary\": 80000\n}"
+				}
+			]
 		},
 		{
 			"name": "Delete mechanic",
@@ -134,7 +317,62 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Delete mechanic",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "127.0.0.1:5000/mechanics/1",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"mechanics",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.0.4 Python/3.12.3"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Jan 2025 00:58:33 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "36"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Mechanic deleted\"\n}"
+				}
+			]
 		},
 		{
 			"name": "Get service ticket",
@@ -155,7 +393,55 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Get service ticket",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:5000/service_tickets",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"service_tickets"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.0.4 Python/3.12.3"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Jan 2025 00:58:39 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1062"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"VIN\": \"55\",\n        \"customer_id\": 6,\n        \"id\": 2,\n        \"inventory\": [],\n        \"mechanics\": [],\n        \"service_date\": \"2020-05-10\",\n        \"service_desc\": \"oil change\"\n    },\n    {\n        \"VIN\": \"6565656565\",\n        \"customer_id\": 9,\n        \"id\": 3,\n        \"inventory\": [],\n        \"mechanics\": [],\n        \"service_date\": \"2005-04-03\",\n        \"service_desc\": \"airbag\"\n    },\n    {\n        \"VIN\": \"\",\n        \"customer_id\": 9,\n        \"id\": 4,\n        \"inventory\": [],\n        \"mechanics\": [],\n        \"service_date\": \"2000-01-01\",\n        \"service_desc\": \"radio\"\n    },\n    {\n        \"VIN\": \"2123123\",\n        \"customer_id\": 11,\n        \"id\": 6,\n        \"inventory\": [],\n        \"mechanics\": [],\n        \"service_date\": \"2020-05-08\",\n        \"service_desc\": \"brake light broken\"\n    },\n    {\n        \"VIN\": \"2123123\",\n        \"customer_id\": 11,\n        \"id\": 7,\n        \"inventory\": [],\n        \"mechanics\": [],\n        \"service_date\": \"2020-05-08\",\n        \"service_desc\": \"brake light broken\"\n    },\n    {\n        \"VIN\": \"2123123\",\n        \"customer_id\": 11,\n        \"id\": 8,\n        \"inventory\": [],\n        \"mechanics\": [],\n        \"service_date\": \"2020-05-08\",\n        \"service_desc\": \"brake light broken\"\n    }\n]"
+				}
+			]
 		},
 		{
 			"name": "Enter service ticket",
@@ -170,7 +456,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"service_date\":\"\",\n\"service_desc\":\"\",\n\"VIN\":\"\",\n\"customer_id\":\"\",\n\"mechanic_ids\":[]}",
+					"raw": "{\"service_date\":\"\",\n\"service_desc\":\"\",\n\"VIN\":\"\",\n\"customer_id\":\"\",\n\"mechanic_ids\":[],\n\"part_ids\":[]}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -191,7 +477,70 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Enter service ticket",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"service_date\":\"2020-11-27\",\n\"service_desc\":\"windshield crack\",\n\"VIN\":\"588888\",\n\"customer_id\":\"11\",\n\"mechanic_ids\":[],\n\"part_ids\":[]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:5000/service_tickets",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"service_tickets"
+							]
+						}
+					},
+					"status": "CREATED",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.0.4 Python/3.12.3"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Jan 2025 01:00:34 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "162"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"VIN\": \"588888\",\n    \"customer_id\": 11,\n    \"id\": 9,\n    \"inventory\": [],\n    \"mechanics\": [],\n    \"service_date\": \"2020-11-27\",\n    \"service_desc\": \"windshield crack\"\n}"
+				}
+			]
 		},
 		{
 			"name": "Get customers",
@@ -215,7 +564,55 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Get customers",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:5000/customers",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"customers"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.0.4 Python/3.12.3"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Jan 2025 00:59:21 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "385"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"email\": \"mark.scout@lumon.com\",\n        \"id\": 6,\n        \"name\": \"Mark Scout\",\n        \"password\": \"outie\",\n        \"phone\": \"1234556\"\n    },\n    {\n        \"email\": \"sos@sza.com\",\n        \"id\": 9,\n        \"name\": \"Solana\",\n        \"password\": \"hello\",\n        \"phone\": \"2222222\"\n    },\n    {\n        \"email\": \"jhurts@eagles.com\",\n        \"id\": 11,\n        \"name\": \"Jaylen\",\n        \"password\": \"barkley\",\n        \"phone\": \"1920187\"\n    }\n]"
+				}
+			]
 		},
 		{
 			"name": "Access customer profiles",
@@ -246,32 +643,89 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Access customer profiles",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:5000/customers/profile",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"customers",
+								"profile"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.0.4 Python/3.12.3"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Jan 2025 01:08:36 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "105"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"email\": \"sos@sza.com\",\n    \"id\": 9,\n    \"name\": \"Solana\",\n    \"password\": \"hello\",\n    \"phone\": \"2222222\"\n}"
+				}
+			]
 		},
 		{
 			"name": "Customer login",
 			"request": {
 				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3Mzc2MTA4MDAsImlhdCI6MTczNzYwNzIwMCwic3ViIjoxfQ.B7RKJQTqa_JVxMjrbx17HchjjBisuqZbz0Xs5u8Yswk\"",
-							"type": "string"
-						}
-					]
+					"type": "noauth"
 				},
 				"method": "POST",
 				"header": [
 					{
-						"key": "content-type",
+						"key": "Content-Type",
 						"value": "application/json",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"email\":\"\",\n\"password\":\"\"}",
+					"raw": "{\"email\":\"sos@sza.com\",\n\"password\":\"hello\"}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -279,7 +733,7 @@
 					}
 				},
 				"url": {
-					"raw": "127.0.0.1:5000/customers/login",
+					"raw": "127.0.0.1:5000/customers/login/",
 					"host": [
 						"127",
 						"0",
@@ -289,11 +743,76 @@
 					"port": "5000",
 					"path": [
 						"customers",
-						"login"
+						"login",
+						""
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Customer login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"email\":\"sos@sza.com\",\n\"password\":\"hello\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:5000/customers/login",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"customers",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.0.4 Python/3.12.3"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Jan 2025 01:08:01 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "215"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Login successful\",\n    \"status\": \"success\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MzgwMzAwODEsImlhdCI6MTczODAyNjQ4MSwic3ViIjoiOSJ9.UXB7jM5ovAIOXQaBIS5snGc0kBr_MZom8FOj-QHayB8\"\n}"
+				}
+			]
 		},
 		{
 			"name": "Edit service ticket (mechanics)",
@@ -332,7 +851,71 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Edit service ticket (mechanics)",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"add_mechanic_ids\": [3],\n    \"remove_mechanic_ids\": [],\n    \"add_part_ids\": [4]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:5000/service_tickets/3",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"service_tickets",
+								"3"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.0.4 Python/3.12.3"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Jan 2025 01:11:32 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "377"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"VIN\": \"6565656565\",\n    \"customer_id\": 9,\n    \"id\": 3,\n    \"inventory\": [\n        {\n            \"id\": 4,\n            \"name\": \"Air freshener\",\n            \"price\": 2.99\n        }\n    ],\n    \"mechanics\": [\n        {\n            \"email\": \"choseone@hogwarts.edu\",\n            \"id\": 3,\n            \"name\": \"Harry\",\n            \"phone\": \"999666\",\n            \"salary\": 5000\n        }\n    ],\n    \"service_date\": \"2005-04-03\",\n    \"service_desc\": \"airbag\"\n}"
+				}
+			]
 		},
 		{
 			"name": "Delete customer",
@@ -370,7 +953,61 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Delete customer",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "127.0.0.1:5000/customers",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"customers"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.0.4 Python/3.12.3"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Jan 2025 01:14:04 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "40"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Deleted successfully\"\n}"
+				}
+			]
 		},
 		{
 			"name": "Create customer",
@@ -410,7 +1047,71 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Create customer",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"Bloo\",\n\"email\":\"blah@blah.com\",\n\"phone\":\"1111111\",\n\"password\":\"test\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:5000/customers/",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"customers",
+								""
+							]
+						}
+					},
+					"status": "CREATED",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.0.4 Python/3.12.3"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Jan 2025 01:12:20 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "105"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"email\": \"blah@blah.com\",\n    \"id\": 12,\n    \"name\": \"Bloo\",\n    \"password\": \"test\",\n    \"phone\": \"1111111\"\n}"
+				}
+			]
 		},
 		{
 			"name": "Create mechanic",
@@ -450,7 +1151,71 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Create mechanic",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"Chappell\",\n\"email\":\"croan@pinkponyclub.com\",\n\"phone\":\"5555555\",\n\"salary\":\"800000.00\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:5000/mechanics/",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"mechanics",
+								""
+							]
+						}
+					},
+					"status": "CREATED",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.0.4 Python/3.12.3"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Jan 2025 01:14:54 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "117"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"email\": \"croan@pinkponyclub.com\",\n    \"id\": 6,\n    \"name\": \"Chappell\",\n    \"phone\": \"5555555\",\n    \"salary\": 800000\n}"
+				}
+			]
 		},
 		{
 			"name": "Delete mechanic",
@@ -481,7 +1246,62 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Delete mechanic",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "127.0.0.1:5000/mechanics/7",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"mechanics",
+								"7"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.0.4 Python/3.12.3"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Jan 2025 01:15:56 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "36"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Mechanic deleted\"\n}"
+				}
+			]
 		},
 		{
 			"name": "Edit customers",
@@ -521,7 +1341,64 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Edit customers",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"Solana\",\n\"email\":\"sza@music.com\",\n\"phone\":\"898562\",\n\"password\":\"saturn\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:5000/customers",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"customers"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.0.4 Python/3.12.3"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Jan 2025 01:17:31 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "107"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"email\": \"sza@music.com\",\n    \"id\": 9,\n    \"name\": \"Solana\",\n    \"password\": \"saturn\",\n    \"phone\": \"898562\"\n}"
+				}
+			]
 		},
 		{
 			"name": "Delete service ticket",
@@ -551,7 +1428,62 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Delete service ticket",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "127.0.0.1:5000/service_tickets/4",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"service_tickets",
+								"4"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.0.4 Python/3.12.3"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Jan 2025 01:17:51 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "36"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Ticket 4 deleted\"\n}"
+				}
+			]
 		},
 		{
 			"name": "Edit service ticket (VIN, service date, etc)",
@@ -581,7 +1513,72 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Edit service ticket (VIN, service date, etc)",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"service_date\":\"2000-05-08\",\n\"service_desc\":\"rear wheel\",\n\"VIN\":\"555555\",\n\"customer_id\":\"11\",\n\"mechanic_ids\":[],\n\"part_ids\":[]}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:5000/service_tickets/3/edit",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"service_tickets",
+								"3",
+								"edit"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.0.4 Python/3.12.3"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Jan 2025 01:20:02 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "418"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"VIN\": \"555555\",\n    \"customer_id\": 11,\n    \"id\": 3,\n    \"inventory\": [\n        {\n            \"id\": 4,\n            \"name\": \"Air freshener\",\n            \"price\": 2.99\n        }\n    ],\n    \"mechanic_ids\": [],\n    \"mechanics\": [\n        {\n            \"email\": \"choseone@hogwarts.edu\",\n            \"id\": 3,\n            \"name\": \"Harry\",\n            \"phone\": \"999666\",\n            \"salary\": 5000\n        }\n    ],\n    \"part_ids\": [],\n    \"service_date\": \"2000-05-08\",\n    \"service_desc\": \"rear wheel\"\n}"
+				}
+			]
 		},
 		{
 			"name": "Get inventory",
@@ -623,7 +1620,70 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Get inventory",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:5000/inventory",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"inventory"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.0.4 Python/3.12.3"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Jan 2025 01:20:25 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "138"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 3,\n        \"name\": \"Spark plug\",\n        \"price\": 5.99\n    },\n    {\n        \"id\": 4,\n        \"name\": \"Air freshener\",\n        \"price\": 2.99\n    }\n]"
+				}
+			]
 		},
 		{
 			"name": "Create part",
@@ -656,7 +1716,64 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Create part",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"Air freshener\",\n\"price\":\"2.99\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:5000/inventory",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"inventory"
+							]
+						}
+					},
+					"status": "CREATED",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.0.4 Python/3.12.3"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Jan 2025 01:11:14 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "58"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 4,\n    \"name\": \"Air freshener\",\n    \"price\": 2.99\n}"
+				}
+			]
 		},
 		{
 			"name": "Update part",
@@ -690,7 +1807,65 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Update part",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"Motor oil\",\n\"price\":\"90.00\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:5000/inventory/5",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"inventory",
+								"5"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.0.4 Python/3.12.3"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Jan 2025 01:21:31 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "54"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 5,\n    \"name\": \"Motor oil\",\n    \"price\": 90\n}"
+				}
+			]
 		},
 		{
 			"name": "Delete item",
@@ -714,7 +1889,56 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Delete item",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:5000/inventory/5",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"inventory",
+								"5"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.0.4 Python/3.12.3"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Jan 2025 01:21:38 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "32"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Item deleted\"\n}"
+				}
+			]
 		}
 	]
 }
